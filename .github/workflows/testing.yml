@@ -1,7 +1,7 @@
 name: Test App
 on: push
 jobs:
-  test_my_app:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Get the repo code
@@ -10,3 +10,23 @@ jobs:
         run: go mod vendor
       - name: Test app
         run: go test ./...
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the repo code
+        uses: actions/checkout@v3
+      - name: Install deps
+        run: go mod vendor
+      - name: Golang Formatter
+        uses: sladyn98/auto-go-format@master
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the repo code
+        uses: actions/checkout@v3
+      - name: Install deps
+        run: go mod vendor
+      - name: Test app
+        run: go run main.go
+      - name: Deploy
+        run: echo Deploying...

@@ -18,7 +18,7 @@ jobs:
       - name: Install deps
         run: go mod vendor
       - name: Golang Formatter
-        uses: echo Code formatting...
+        run: echo Code formatting...
   build:
     runs-on: ubuntu-latest
     steps:

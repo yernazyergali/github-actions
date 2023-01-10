@@ -9,4 +9,4 @@ jobs:
       - name: Install deps
         run: go mod vendor
       - name: Test app
-        run: go test .
+        run: go test ./...
